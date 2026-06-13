@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    image: postgres:15
+
+    container_name: postgres_db
+
+    environment:
+      POSTGRES_DB: pratica
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+
+    ports:
+      - "5432:5432"
+
+  app:
+    image: pratica
+
+    container_name: spring_boot_app
+
+    depends_on:
+      - postgres
